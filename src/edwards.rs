@@ -142,12 +142,12 @@ use traits::{VartimeMultiscalarMul, VartimePrecomputedMultiscalarMul};
 
 #[cfg(not(all(
     feature = "simd_backend",
-    any(target_feature = "avx2", target_feature = "avx512ifma")
+    any(target_feature = "avx2", target_feature = "avx512ifma",  target_feature = "neon")
 )))]
 use backend::serial::scalar_mul;
 #[cfg(all(
     feature = "simd_backend",
-    any(target_feature = "avx2", target_feature = "avx512ifma")
+    any(target_feature = "avx2", target_feature = "avx512ifma",  target_feature = "neon")
 ))]
 use backend::vector::scalar_mul;
 
@@ -1138,7 +1138,7 @@ impl EdwardsPoint {
     /// # Example
     ///
     /// ```
-    /// use curve25519_dalek::constants;
+    /// use curve25519_dalek_ng::constants;
     ///
     /// // Generator of the prime-order subgroup
     /// let P = constants::ED25519_BASEPOINT_POINT;
@@ -1168,7 +1168,7 @@ impl EdwardsPoint {
     /// # Example
     ///
     /// ```
-    /// use curve25519_dalek::constants;
+    /// use curve25519_dalek_ng::constants;
     ///
     /// // Generator of the prime-order subgroup
     /// let P = constants::ED25519_BASEPOINT_POINT;

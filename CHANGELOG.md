@@ -1,7 +1,27 @@
 # Changelog
 
-Entries are listed in reverse chronological order per undeprecated
-major series.
+Entries are listed in reverse chronological order per major series.
+
+## 4.x series
+
+### 4.1.1
+
+* Fix missing `doc(cfg(...))` when using the `simd_backend` feature.
+
+### 4.1.0
+
+* Update `subtle-ng` to `2.5` and replace the deprecated `#[doc(include())]`
+  syntax with the newly-stabilized `#[doc = include_str!]` syntax.
+
+### 4.0.1
+
+* Update README.
+
+### 4.0.0
+
+* Update the `rand_core` dependency to `0.6`.  This requires a major version
+  because the `digest` traits are part of the public API, but there are
+  otherwise no changes to the API.
 
 ## 3.x series
 
@@ -40,6 +60,7 @@ major series.
 
 * Fix documentation builds on nightly due to syntax changes to
   `#![cfg_attr(feature = "nightly", doc = include_str!("../README.md"))]`.
+* Add note about package naming and crate seizure.
 
 ### 3.0.2
 
@@ -57,7 +78,7 @@ major series.
   because the `digest` traits are part of the public API, but there are
   otherwise no changes to the API.
 
-## 2.x series
+## 2.x series (unsupported)
 
 ### 2.1.3
 
@@ -97,7 +118,7 @@ major series.
 The only significant change is the data model change to the `serde` feature;
 besides the `rand_core` version bump, there are no other user-visible changes.
 
-## 1.x series
+## 1.x series (unsupported)
 
 ### 1.2.6
 

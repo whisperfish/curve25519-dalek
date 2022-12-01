@@ -12,7 +12,8 @@ use criterion::BatchSize;
 use criterion::Criterion;
 use criterion::{BenchmarkGroup, BenchmarkId};
 
-extern crate curve25519_dalek;
+extern crate curve25519_dalek_ng;
+use curve25519_dalek_ng as curve25519_dalek;
 
 use curve25519_dalek::constants;
 use curve25519_dalek::scalar::Scalar;

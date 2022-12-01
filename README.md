@@ -1,5 +1,5 @@
 
-# curve25519-dalek [![](https://img.shields.io/crates/v/curve25519-dalek.svg)](https://crates.io/crates/curve25519-dalek) [![](https://img.shields.io/badge/dynamic/json.svg?label=docs&uri=https%3A%2F%2Fcrates.io%2Fapi%2Fv1%2Fcrates%2Fcurve25519-dalek%2Fversions&query=%24.versions%5B0%5D.num&colorB=4F74A6)](https://doc.dalek.rs) [![](https://travis-ci.org/dalek-cryptography/curve25519-dalek.svg?branch=master)](https://travis-ci.org/dalek-cryptography/curve25519-dalek)
+# curve25519-dalek-ng
 
 <img
  width="33%"
@@ -45,8 +45,22 @@ make doc-internal
 To import `curve25519-dalek`, add the following to the dependencies section of
 your project's `Cargo.toml`:
 ```toml
-curve25519-dalek = "3"
+curve25519-dalek-ng = "4.1"
 ```
+
+To switch from the previous `curve25519-dalek` crate without changing your code,
+use the following:
+```toml
+curve25519-dalek = { package = "curve25519-dalek-ng", version = "4" }
+```
+
+This crate continues the `curve25519-dalek` series under a different package name.
+Unfortunately, one of the maintainers of the previous crate seized control of the
+`dalek-cryptography` GitHub organization and the `subtle` and `curve25519-dalek`
+crates by silently removing all other co-maintainers.
+
+The `4.x` series has API almost entirely unchanged from the `3.x` series,
+except that the `rand_core` version was updated.
 
 The sole breaking change in the `3.x` series was an update to the `digest`
 version, and in terms of non-breaking changes it includes:
@@ -62,8 +76,8 @@ version, and in terms of non-breaking changes it includes:
   the Coq theorem proving system, and
 * support for explicitly calling the `zeroize` traits for all point types.
 
-The `2.x` series has API almost entirely unchanged from the `1.x` series,
-except that:
+The `2.x` series (unsupported) has API almost entirely unchanged from the
+`1.x` series, except that:
 
 * an error in the data modeling for the (optional) `serde` feature was
   corrected, so that when the `2.x`-series `serde` implementation is used
@@ -176,9 +190,16 @@ that primitive.
 
 Please see [CONTRIBUTING.md][contributing].
 
+<<<<<<< HEAD
 Patches and pull requests should be make against the `develop`
 branch, **not** `main`.
 
+||||||| 73100b7
+Patches and pull requests should be make against the `develop`
+branch, **not** `master`.
+
+=======
+>>>>>>> neon
 # About
 
 **SPOILER ALERT:** *The Twelfth Doctor's first encounter with the Daleks is in
@@ -218,9 +239,9 @@ contributions.
 
 [ed25519-dalek]: https://github.com/dalek-cryptography/ed25519-dalek
 [x25519-dalek]: https://github.com/dalek-cryptography/x25519-dalek
-[contributing]: https://github.com/dalek-cryptography/curve25519-dalek/blob/master/CONTRIBUTING.md
-[docs-external]: https://doc.dalek.rs/curve25519_dalek/
+[contributing]: https://github.com/zkcrypto/curve25519-dalek-ng/blob/master/CONTRIBUTING.md
+[subtle_doc]: https://docs.rs/subtle_ng/
+[docs-external]: https://docs.rs/curve25519-dalek-ng/
 [docs-internal]: https://doc-internal.dalek.rs/curve25519_dalek/
-[criterion]: https://github.com/japaric/criterion.rs
 [parallel_doc]: https://doc-internal.dalek.rs/curve25519_dalek/backend/vector/avx2/index.html
-[subtle_doc]: https://doc.dalek.rs/subtle/
+[criterion]: https://github.com/japaric/criterion.rs

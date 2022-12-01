@@ -194,12 +194,12 @@ use traits::{MultiscalarMul, VartimeMultiscalarMul, VartimePrecomputedMultiscala
 
 #[cfg(not(all(
     feature = "simd_backend",
-    any(target_feature = "avx2", target_feature = "avx512ifma")
+    any(target_feature = "avx2", target_feature = "avx512ifma",  target_feature = "neon")
 )))]
 use backend::serial::scalar_mul;
 #[cfg(all(
     feature = "simd_backend",
-    any(target_feature = "avx2", target_feature = "avx512ifma")
+    any(target_feature = "avx2", target_feature = "avx512ifma",  target_feature = "neon")
 ))]
 use backend::vector::scalar_mul;
 
@@ -486,8 +486,8 @@ impl RistrettoPoint {
     /// in a batch.
     ///
     /// ```
-    /// # extern crate curve25519_dalek;
-    /// # use curve25519_dalek::ristretto::RistrettoPoint;
+    /// # extern crate curve25519_dalek_ng;
+    /// # use curve25519_dalek_ng::ristretto::RistrettoPoint;
     /// extern crate rand_core;
     /// use rand_core::OsRng;
     ///
@@ -675,8 +675,8 @@ impl RistrettoPoint {
     /// # Example
     ///
     /// ```
-    /// # extern crate curve25519_dalek;
-    /// # use curve25519_dalek::ristretto::RistrettoPoint;
+    /// # extern crate curve25519_dalek_ng;
+    /// # use curve25519_dalek_ng::ristretto::RistrettoPoint;
     /// extern crate sha2;
     /// use sha2::Sha512;
     ///
@@ -985,8 +985,8 @@ impl RistrettoPoint {
 /// A precomputed table of multiples of the Ristretto basepoint is
 /// available in the `constants` module:
 /// ```
-/// use curve25519_dalek::constants;
-/// use curve25519_dalek::scalar::Scalar;
+/// use curve25519_dalek_ng::constants;
+/// use curve25519_dalek_ng::scalar::Scalar;
 ///
 /// let a = Scalar::from(87329482u64);
 /// let P = &a * &constants::RISTRETTO_BASEPOINT_TABLE;
@@ -1033,14 +1033,14 @@ impl ConditionallySelectable for RistrettoPoint {
     ///
     /// ```
     /// # extern crate subtle;
-    /// # extern crate curve25519_dalek;
+    /// # extern crate curve25519_dalek_ng;
     /// #
     /// use subtle::ConditionallySelectable;
     /// use subtle::Choice;
     /// #
-    /// # use curve25519_dalek::traits::Identity;
-    /// # use curve25519_dalek::ristretto::RistrettoPoint;
-    /// # use curve25519_dalek::constants;
+    /// # use curve25519_dalek_ng::traits::Identity;
+    /// # use curve25519_dalek_ng::ristretto::RistrettoPoint;
+    /// # use curve25519_dalek_ng::constants;
     /// # fn main() {
     ///
     /// let A = RistrettoPoint::identity();
